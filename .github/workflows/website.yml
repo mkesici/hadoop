@@ -49,11 +49,5 @@ jobs:
         run: mvn clean site
       - name: Stage document
         run: mvn site:stage -DstagingDirectory=${GITHUB_WORKSPACE}/staging/
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./staging/hadoop-project
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.1
